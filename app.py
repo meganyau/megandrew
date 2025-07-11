@@ -65,7 +65,7 @@ time.sleep(1)
 
 
 # === Load Data ===
-df = pd.read_csv('/Users/megan/Desktop/project_a/messagess.csv')
+df = pd.read_csv('messagess.csv')
 df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
 df = df.dropna(subset=['timestamp', 'text'])
 df = df[~df['text'].str.contains(r'loved\s+["“”]', case=False, na=False)]  # remove quotes after loved
