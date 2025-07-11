@@ -3,6 +3,9 @@ from datetime import datetime
 import pandas as pd
 import streamlit as st
 import time
+import os
+df = pd.read_csv(os.path.join(os.path.dirname(__file__), 'messages.csv'))
+
 
 st.set_page_config(page_title="Megandrew Wrapped", layout="wide")
 st.markdown(
@@ -65,7 +68,6 @@ time.sleep(1)
 
 
 # === Load Data ===
-df = pd.read_csv('messages.csv')
 df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
 df = df.dropna(subset=['timestamp', 'text'])
 df = df[~df['text'].str.contains(r'loved\s+["“”]', case=False, na=False)]  # remove quotes after loved
